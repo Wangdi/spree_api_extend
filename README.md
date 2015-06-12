@@ -5,10 +5,24 @@ SpreeApiExtend
 
 A couple quick additional methods on the api to better support JS MVC frontends.
 
-- Create users (don't have to be an admin) @ /api/users. Returns api key in response
-- Login users via POST /api/sessions w/ json: "{ session: {email: "email", password: "password"}}"". returns api key in response.
-- Get current order & user @ "/api/status"
-- get /api/orders w/ a logged in 'non-admin' user will return all orders belonging to that user.
+- Create users (non-admin): POST  /api/users  json: {"user": {"email": "spree@example.com", "password": "spree123"}}. Returns @user
+- Login users: POST  /api/session  json: { "session": { "email": "email", "password": "password"}}. Returns @user
+- Get current order & user: GET  /api/status
+- Current user's orders: GET /api/orders. Returns @orders
+
+Response JSON for /api/users and /api/session 
+```
+{
+  id: 6
+  email: "spree1@example.com"
+  login: "spree1@example.com"
+  created_at: "2015-06-15T08:26:12.548Z"
+  updated_at: "2015-06-15T08:26:12.555Z"
+  spree_api_key: "672651b4672b4f9fd01ced521e738da289b81425fb23af8c"
+  bill_address: null
+  ship_address: null
+}
+```
 
 CAUTION
 ------------
@@ -20,7 +34,7 @@ Installation
 Add spree_api_extend to your Gemfile:
 
 ```ruby
-gem 'spree_api_extend'
+gem 'spree_api_extend', github: 'Wangdi/spree_api_extend', branch: '3-0-stable'
 ```
 
 Bundle your dependencies and run the installation generator:
