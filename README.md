@@ -1,3 +1,5 @@
+Original repo: [andrewmp1/spree_api_extend](https://github.com/andrewmp1/spree_api_extend)
+
 SpreeApiExtend
 ==============
 
